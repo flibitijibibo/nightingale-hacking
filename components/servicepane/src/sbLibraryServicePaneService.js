@@ -1603,7 +1603,8 @@ function sbLibraryServicePane__ensureLibraryNodeExists(aLibrary) {
   }
 
   if (aLibrary == this._libraryManager.mainLibrary) {
-    for each (let type in ["video", "audio"]) {
+    // flibit removed the Videos entry arbitrarily
+    for each (let type in [/*"video",*/ "audio"]) {
       let node = makeNodeFromLibrary(aLibrary, type, parentNode);
     }
 
@@ -1843,7 +1844,8 @@ function sbLibraryServicePane__insertMediaListNode(aNode, aMediaList, aAppend) {
       if (libraryNode.parentNode != this._servicePane.root)
         libraryNode = libraryNode.parentNode;
 
-      libraryNode.appendChild(aNode);
+      // flibit removed the Downloads entry arbitrarily
+      // libraryNode.appendChild(aNode);
     } else {
       // make sure the playlist folder exists
       var folder;

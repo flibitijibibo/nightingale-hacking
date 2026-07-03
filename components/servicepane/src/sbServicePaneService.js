@@ -748,7 +748,17 @@ ServicePaneService.prototype = {
   },
 
   createNode: function ServicePaneService_createNode() {
-    return new ServicePaneNode(this, null);
+    // flibit couldn't come up with a better way to make alphabetical ordering a separate createNode call
+    return new ServicePaneNode(this, function(aNode1, aNode2) {
+      let name1 = aNode1.displayName;
+      let name2 = aNode2.displayName;
+      if (name1 < name2)
+        return -1;
+      else if (name1 > name2)
+        return 1;
+
+      return 0;
+    });
   },
 
   _registerNode: function ServicePaneService__registerNode(
